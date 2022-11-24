@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_concept/cubit/counter_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_concept/presentation/screens/second_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title, required this.color});
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({super.key, required this.title, required this.color});
 
   final String title;
   final Color color;
-
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ThirdScreen> createState() => _ThirdScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -26,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -67,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FloatingActionButton(
-                  heroTag: null,
+                  heroTag: 'bt1',
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).decrement();
                     // context.bloc<CounterCubit>().decrement();
@@ -76,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(Icons.remove),
                 ),
                 FloatingActionButton(
-                  heroTag: "btn1d",
+                  heroTag: 'bt2',
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).increment();
                   },
@@ -84,31 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(Icons.add),
                 ),
               ],
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            MaterialButton(
-              child: Text(
-                'Go to second screen',
-                style: TextStyle(color: Colors.white),
-              ),
-              color: widget.color,
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => BlocProvider.value(
-                      value: BlocProvider.of<CounterCubit>(
-                          // neu su dung dang nay thi gia man hinh 2 va 1 cung gia tri
-                          context), //CounterCubit(),
-                      child: SecondScreen(
-                        title: 'Second Screen',
-                        color: Colors.redAccent,
-                      ),
-                    ),
-                  ),
-                );
-              },
             )
           ],
         ),
