@@ -12,7 +12,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final CounterCubit _counterCubit = CounterCubit();
   final AppRouter _appRouter = AppRouter();
 
   // This widget is the root of your application.
@@ -28,10 +27,5 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: _appRouter.onGenerateRoute,
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _appRouter.dispose();
   }
 }
