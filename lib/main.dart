@@ -7,11 +7,11 @@ import 'package:flutter_bloc_concept/presentation/screens/third_screen.dart';
 import 'presentation/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CounterCubit _counterCubit = CounterCubit();
 
   // This widget is the root of your application.
   @override
@@ -24,27 +24,27 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         routes: {
-          '/': (context) => BlocProvider(
-                create: (context) => CounterCubit(),
+          '/': (context) => BlocProvider.value(
+                value: _counterCubit,
                 child: HomeScreen(
                   title: 'HomeScreen',
                   color: Colors.blueAccent,
                 ),
               ),
-          '/second': (context) => BlocProvider(
-                create: (context) => CounterCubit(),
+          '/second': (context) => BlocProvider.value(
+                value: _counterCubit,
                 child: SecondScreen(
                   title: 'SecondScreen',
                   color: Colors.redAccent,
                 ),
               ),
-          '/third': (context) => BlocProvider(
-                create: (context) => CounterCubit(),
+          '/third': (context) => BlocProvider.value(
+                value: _counterCubit,
                 child: ThirdScreen(
                   title: 'ThirdScreen',
                   color: Colors.greenAccent,
                 ),
-              )
+              ),
         },
       ),
     );
