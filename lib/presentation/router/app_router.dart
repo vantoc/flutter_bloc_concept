@@ -8,12 +8,12 @@ import '../screens/second_screen.dart';
 class AppRouter {
   final CounterCubit _counterCubit = CounterCubit();
 
-  static Route onGenerateRoute(RouteSettings routeSettings) {
+  Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => CounterCubit(),
+            builder: (_) => BlocProvider.value(
+                  value: _counterCubit,
                   child: HomeScreen(
                     title: 'HomeScreen',
                     color: Colors.blueAccent,
@@ -22,8 +22,8 @@ class AppRouter {
         break;
       case '/second':
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => CounterCubit(),
+            builder: (_) => BlocProvider.value(
+                  value: _counterCubit,
                   child: SecondScreen(
                     title: 'SecondScreen',
                     color: Colors.redAccent,
@@ -32,8 +32,8 @@ class AppRouter {
         break;
       case '/third':
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => CounterCubit(),
+            builder: (_) => BlocProvider.value(
+                  value: _counterCubit,
                   child: ThirdScreen(
                     title: 'ThirdScreen',
                     color: Colors.redAccent,
@@ -42,8 +42,8 @@ class AppRouter {
         break;
       default:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => CounterCubit(),
+            builder: (_) => BlocProvider.value(
+                  value: _counterCubit,
                   child: HomeScreen(
                     title: 'HomeScreen',
                     color: Colors.blueAccent,

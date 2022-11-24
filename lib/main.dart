@@ -13,6 +13,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final CounterCubit _counterCubit = CounterCubit();
+  final AppRouter _appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override
@@ -24,8 +25,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        onGenerateRoute: AppRouter.onGenerateRoute,
+        onGenerateRoute: _appRouter.onGenerateRoute,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _appRouter.dispose();
   }
 }
