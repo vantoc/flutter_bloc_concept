@@ -43,7 +43,7 @@ dev_dependencies:
   bloc: ^6.0.2
   flutter_bloc: ^6.0.5
   equatable: ^1.2.5
-
+  connectivity_plus: ^3.0.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
