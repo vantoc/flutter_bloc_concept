@@ -24,17 +24,26 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         routes: {
-          '/': (context) => HomeScreen(
-                title: 'HomeScreen',
-                color: Colors.blueAccent,
+          '/': (context) => BlocProvider(
+                create: (context) => CounterCubit(),
+                child: HomeScreen(
+                  title: 'HomeScreen',
+                  color: Colors.blueAccent,
+                ),
               ),
-          '/second': (context) => SecondScreen(
-                title: 'SecondScreen',
-                color: Colors.redAccent,
+          '/second': (context) => BlocProvider(
+                create: (context) => CounterCubit(),
+                child: SecondScreen(
+                  title: 'SecondScreen',
+                  color: Colors.redAccent,
+                ),
               ),
-          '/third': (context) => ThirdScreen(
-                title: 'ThirdScreen',
-                color: Colors.greenAccent,
+          '/third': (context) => BlocProvider(
+                create: (context) => CounterCubit(),
+                child: ThirdScreen(
+                  title: 'ThirdScreen',
+                  color: Colors.greenAccent,
+                ),
               )
         },
       ),
