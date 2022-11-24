@@ -8,32 +8,7 @@ import 'package:equatable/equatable.dart';
 part 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
-  final InternetCubit internetCubit;
-  StreamSubscription? internetStreamSubscription;
-
-  CounterCubit({required this.internetCubit})
-      : super(CounterState(counterValue: 0)) {
-    monitorInternetCubit();
-  }
-
-  StreamSubscription<InternetState> monitorInternetCubit() {
-    return internetStreamSubscription = internetCubit.listen((internetState) {
-      if (internetState is InternetConnected &&
-          internetState.connectionType == ConnectionType.Wifi) {
-        increment();
-      } else if (internetState is InternetConnected &&
-          internetState.connectionType == ConnectionType.Mobile) {
-        decrement();
-      }
-    });
-  }
-
-  @override
-  Future<void> close() {
-    // TODO: implement close
-    internetStreamSubscription!.cancel();
-    return super.close();
-  }
+  CounterCubit() : super(CounterState(counterValue: 0));
 
   void increment() => emit(
       CounterState(counterValue: state.counterValue + 1, wasIncremented: true));
