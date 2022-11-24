@@ -97,8 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => BlocProvider.value(
-                      value: CounterCubit(),
+                    builder: (_) => BlocProvider.value(
+                      value: BlocProvider.of<CounterCubit>(
+                          // neu su dung dang nay thi gia man hinh 2 va 1 cung gia tri
+                          context), //CounterCubit(),
                       child: SecondScreen(
                         title: 'Second Screen',
                         color: Colors.redAccent,
