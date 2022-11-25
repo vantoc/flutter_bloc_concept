@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 color: widget.color,
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/third");
+                  Navigator.of(context).pushNamed("/timeduration");
                 },
               )
             ],

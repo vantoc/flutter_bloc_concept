@@ -7,6 +7,7 @@ import 'package:flutter_bloc_concept/presentation/router/app_router.dart';
 import 'package:flutter_bloc_concept/presentation/screens/second_screen.dart';
 import 'package:flutter_bloc_concept/presentation/screens/third_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'logic/bloc/time_bloc.dart';
 import 'logic/utility/app_bloc_observer.dart';
 import 'presentation/screens/home_screen.dart';
 
@@ -27,19 +28,21 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext myAppContext) {
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<InternetCubit>(
-          create: (internetCubitContext) =>
-              InternetCubit(connectivity: connectivity),
+          create: (context) => InternetCubit(connectivity: connectivity),
         ),
         BlocProvider<CounterCubit>(
-          create: (counterCubitContext) => CounterCubit(),
+          create: (context) => CounterCubit(),
         ),
         BlocProvider<SettingsCubit>(
-          create: (counterCubitContext) => SettingsCubit(),
+          create: (context) => SettingsCubit(),
         ),
+        BlocProvider<TimeBloc>(
+          create: (context) => TimeBloc(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
