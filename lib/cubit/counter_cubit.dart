@@ -15,4 +15,12 @@ class CounterCubit extends Cubit<CounterState> {
 
   void decrement() => emit(CounterState(
       counterValue: state.counterValue - 1, wasIncremented: false));
+
+  @override
+  void onChange(Change<CounterState> change) {
+    // TODO: implement onChange
+    print(change.currentState.counterValue.toString());
+    print(change.nextState.counterValue.toString());
+    super.onChange(change);
+  }
 }
