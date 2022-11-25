@@ -7,9 +7,12 @@ import 'package:flutter_bloc_concept/presentation/router/app_router.dart';
 import 'package:flutter_bloc_concept/presentation/screens/second_screen.dart';
 import 'package:flutter_bloc_concept/presentation/screens/third_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'logic/utility/app_bloc_observer.dart';
 import 'presentation/screens/home_screen.dart';
 
 void main() {
+  Bloc.observer = AppBlocObserver();
+
   runApp(MyApp(
     appRouter: AppRouter(),
     connectivity: Connectivity(),
